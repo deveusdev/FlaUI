@@ -201,7 +201,7 @@ namespace FlaUI.Core
             var waitTime = waitTimeout ?? TimeSpan.FromMilliseconds(-1);
             Retry.While(() =>
             {
-                _process.Refresh();
+                var process = Process.GetProcessById(_process.Id);
                 return _process.MainWindowHandle == IntPtr.Zero;
             }, waitTime, TimeSpan.FromMilliseconds(50));
         }
